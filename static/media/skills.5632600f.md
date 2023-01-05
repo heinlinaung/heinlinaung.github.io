@@ -1,4 +1,4 @@
-## Technical skills
+## Technical skills 👨🏻‍💻
 
 - Backend 
   - Node.js, MongoDB, DynamoDB, typescript(learning), RubyOnRails, PostgreSQL
@@ -7,10 +7,14 @@
 - Others 
   - Git, AWS services, SCRUM, Stripe, Firebase, Azure Devops, Docker, Bash, typescript, ed.link/LTI, kubernetes(learning)
 
-## Special interests 👌
+---
+## Special interests 🧑🏻‍🔬
 
-- Reading [Technical Blogs and books] 📚
+- Self-Development
+  - Online courses
+  - Self-help books
+  - Reading Technical Blogs
 - Photography and retouch 📷 
   - _*[500px](https://500px.com/p/iamaugusth)*_
-- music production 🎧
-  - _*[soundcloud](https://soundcloud.com/iamaugusth/popular-tracks)*_
+- Travel (Sightseeing, Backpacking, Camping)
+- Esports 

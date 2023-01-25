@@ -1,12 +1,13 @@
 ## Technical skills 👨🏻‍💻
 
 - Backend 
-  - Node.js, MongoDB, DynamoDB, typescript(learning), RubyOnRails, PostgreSQL
+  - Node.js, MongoDB, DynamoDB, RubyOnRails, PostgreSQL
 - Frontend 
   - Javascript, HTML, CSS
 - Others 
-  - Git, AWS services, SCRUM, Stripe, Firebase, Azure Devops, Docker, Bash, typescript, ed.link/LTI, kubernetes(learning)
-
+  - Git, AWS services, SCRUM, Stripe, Firebase, Azure Devops, Docker, Bash, LTI
+- Learning
+  - Typescript, Kubernetes, React/Solid/Svelte[FrontEnd]
 ---
 ## Special interests 🧑🏻‍🔬
 

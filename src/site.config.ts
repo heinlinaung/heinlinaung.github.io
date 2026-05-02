@@ -1,18 +1,16 @@
 export const siteConfig = {
   title: "Hein Lin Aung",
   description:
-    "Backend engineer and team lead. Notes on APIs, infrastructure, and the boring middle of shipping software.",
+    "Team lead with expertise in backend engineering, DevOps, and cloud infrastructure. Notes on APIs, infrastructure, and the boring middle of shipping software.",
   author: "Hein Lin Aung",
   authorInitial: "H",
-  role: "Backend engineer · Team lead",
-  bio: "I build APIs and lead a small team at Amdon. Mostly Node + Postgres, occasionally Rails.",
-  location: "Yangon, Myanmar",
-  url: "https://heinlinaung.github.io",
-  email: "heinlinaung@amdon.com",
+  role: "Backend Team Lead · DevOps · Cloud Infrastructure",
+  bio: "Experienced team lead specializing in scalable backend systems, CI/CD, and cloud infrastructure. [ Certified - AWS SAA, CKAD, Terraform ]",
+  location: "Bangkok, Thailand",
+  email: "heinlinaung.dev@gmail.com",
   social: {
     github: "https://github.com/heinlinaung",
     linkedin: "https://www.linkedin.com/in/hein-lin-aung",
-    goodreads: "https://www.goodreads.com/heinlinaung",
   },
   // Configure these after running https://giscus.app on your repo.
   // Repo must have GitHub Discussions enabled.
@@ -30,17 +28,20 @@ export const siteConfig = {
   },
   stack: [
     "Node.js",
+    "NestJS",
     "TypeScript",
-    "Postgres",
     "MongoDB",
     "DynamoDB",
-    "Rails",
+    "Python",
+    "PostgreSQL",
+    "Redis",
     "AWS",
+    "Terraform",
     "Docker",
     "Kubernetes",
-    "Stripe",
-    "Firebase",
-    "LTI",
+    "Helm",
+    "Azure DevOps",
+    "ArgoCD/FluxCD",
   ],
 };
 

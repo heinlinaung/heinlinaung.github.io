@@ -126,23 +126,25 @@ aside nav a .key {
 
 aside .links {
   display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
+  gap: 6px;
   padding-top: 20px;
   border-top: 1px solid var(--line);
 }
 aside .links a {
-  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
   color: var(--muted);
-  text-decoration: none;
-  padding: 4px 10px;
   border: 1px solid var(--line-2);
-  border-radius: 999px;
-  transition: color 0.15s, border-color 0.15s;
+  border-radius: var(--radius);
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
 }
 aside .links a:hover {
   color: var(--accent);
   border-color: var(--accent);
+  background: var(--panel);
 }
 
 main { min-width: 0; }

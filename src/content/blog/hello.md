@@ -1,7 +1,7 @@
 ---
 title: "A new home for the writing"
 description: "I rebuilt the site. Here's what's different and what I plan to write about."
-pubDate: 2026-05-02
+pubDate: 2026-05-02T09:00
 tags: ["meta"]
 ---
 

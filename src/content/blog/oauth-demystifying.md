@@ -1,7 +1,7 @@
 ---
 title: "OAuth Demystified"
 description: "A practical walk through OAuth 2.0 — components, flow, scopes, OIDC, and why the Authorization Code grant is the one to reach for."
-pubDate: 2026-05-02
+pubDate: 2026-05-02T12:00
 tags: ["oauth", "auth", "general"]
 ---
 

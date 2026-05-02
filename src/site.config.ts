@@ -1,6 +1,7 @@
 export const siteConfig = {
   title: "Hein Lin Aung",
-  description: "Backend engineer and team lead. Notes on APIs, infrastructure, and the boring middle of shipping software.",
+  description:
+    "Backend engineer and team lead. Notes on APIs, infrastructure, and the boring middle of shipping software.",
   author: "Hein Lin Aung",
   authorInitial: "H",
   role: "Backend engineer · Team lead",
@@ -17,9 +18,9 @@ export const siteConfig = {
   // Repo must have GitHub Discussions enabled.
   giscus: {
     repo: "heinlinaung/heinlinaung.github.io",
-    repoId: "", // fill in from giscus.app
+    repoId: "R_kgDOIuUkAQ", // fill in from giscus.app
     category: "Comments",
-    categoryId: "", // fill in from giscus.app
+    categoryId: "DIC_kwDOIuUkAc4C8LQV", // fill in from giscus.app
     mapping: "pathname",
     strict: "0",
     reactionsEnabled: "1",

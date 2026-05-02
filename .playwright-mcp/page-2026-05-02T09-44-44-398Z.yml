@@ -1,0 +1,184 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - complementary [ref=e3]:
+      - link "Home" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - text: H
+      - heading "Hein Lin Aung" [level=1] [ref=e5]:
+        - link "Hein Lin Aung" [ref=e6] [cursor=pointer]:
+          - /url: /
+      - paragraph [ref=e7]: Backend engineer · Team lead
+      - paragraph [ref=e8]: Yangon, Myanmar
+      - paragraph [ref=e10]: I build APIs and lead a small team at Amdon. Mostly Node + Postgres, occasionally Rails.
+      - navigation [ref=e11]:
+        - list [ref=e12]:
+          - listitem [ref=e13]:
+            - link "Home ⌘ 1" [ref=e14] [cursor=pointer]:
+              - /url: /
+              - text: Home
+              - generic [ref=e15]: ⌘ 1
+          - listitem [ref=e16]:
+            - link "Writing ⌘ 2" [ref=e17] [cursor=pointer]:
+              - /url: /blog/
+              - text: Writing
+              - generic [ref=e18]: ⌘ 2
+          - listitem [ref=e19]:
+            - link "Work ⌘ 3" [ref=e20] [cursor=pointer]:
+              - /url: /#work
+              - text: Work
+              - generic [ref=e21]: ⌘ 3
+          - listitem [ref=e22]:
+            - link "Stack ⌘ 4" [ref=e23] [cursor=pointer]:
+              - /url: /#stack
+              - text: Stack
+              - generic [ref=e24]: ⌘ 4
+      - generic [ref=e25]:
+        - link "GitHub" [ref=e26] [cursor=pointer]:
+          - /url: https://github.com/heinlinaung
+        - link "LinkedIn" [ref=e27] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/hein-lin-aung
+        - link "Goodreads" [ref=e28] [cursor=pointer]:
+          - /url: https://www.goodreads.com/heinlinaung
+        - link "Email" [ref=e29] [cursor=pointer]:
+          - /url: mailto:heinlinaung@amdon.com
+    - main [ref=e30]:
+      - article [ref=e31]:
+        - generic [ref=e32]:
+          - paragraph [ref=e33]:
+            - link "Home" [ref=e34] [cursor=pointer]:
+              - /url: /
+            - generic [ref=e35]: /
+            - link "Writing" [ref=e36] [cursor=pointer]:
+              - /url: /blog/
+            - generic [ref=e37]: /
+            - generic [ref=e38]: example-post
+          - heading "An example post (delete me)" [level=1] [ref=e39]
+          - paragraph [ref=e40]:
+            - generic [ref=e41]: May 1, 2026
+            - generic [ref=e42]: example
+        - generic [ref=e43]:
+          - paragraph [ref=e44]: This post is here so the styling is visible right away. Delete the file when you publish a real one.
+          - heading "Headings render like this" [level=2] [ref=e45]
+          - paragraph [ref=e46]:
+            - text: Body copy uses Inter at 16px on a 1.7 line-height. Long-form reading should feel calm, not cramped. Inline code looks like
+            - code [ref=e47]: pg_dump --schema-only
+            - text: .
+          - heading "A subheading" [level=3] [ref=e48]
+          - paragraph [ref=e49]: "Lists work as you’d expect:"
+          - list [ref=e50]:
+            - listitem [ref=e51]: Mostly Node + Postgres
+            - listitem [ref=e52]: Increasingly TypeScript
+            - listitem [ref=e53]: Reluctantly Kubernetes
+            - listitem [ref=e54]: Occasionally Rails
+          - paragraph [ref=e55]: "Numbered lists too:"
+          - list [ref=e56]:
+            - listitem [ref=e57]: Read what’s there.
+            - listitem [ref=e58]: Change the smallest thing that works.
+            - listitem [ref=e59]: Ship.
+          - heading "Code blocks" [level=2] [ref=e60]
+          - code [ref=e62]:
+            - generic [ref=e63]: type Result<T, E = Error> =
+            - generic [ref=e64]: "| { ok: true; value: T }"
+            - generic [ref=e65]: "| { ok: false; error: E };"
+            - generic [ref=e66]: "function divide(a: number, b: number): Result<number, \"div-by-zero\"> {"
+            - generic [ref=e67]: "if (b === 0) return { ok: false, error: \"div-by-zero\" };"
+            - generic [ref=e68]: "return { ok: true, value: a / b };"
+            - generic [ref=e69]: "}"
+          - code [ref=e71]:
+            - generic [ref=e72]: "# rebuild and deploy"
+            - generic [ref=e73]: npm run build && npm run deploy
+          - heading "Quotes" [level=2] [ref=e74]
+          - blockquote [ref=e75]:
+            - paragraph [ref=e76]: If you don’t already run Kubernetes, do not adopt it for one event. Use Docker Compose on a single beefy box and sleep at night.
+          - heading "Links" [level=2] [ref=e77]
+          - paragraph [ref=e78]:
+            - text: This is an
+            - link "external link" [ref=e79] [cursor=pointer]:
+              - /url: https://astro.build
+            - text: and this is
+            - emphasis [ref=e80]: emphasized
+            - text: text.
+          - heading "Tables" [level=2] [ref=e81]
+          - table [ref=e82]:
+            - rowgroup [ref=e83]:
+              - row "Stack When I reach for it" [ref=e84]:
+                - columnheader "Stack" [ref=e85]
+                - columnheader "When I reach for it" [ref=e86]
+            - rowgroup [ref=e87]:
+              - row "Postgres Default. Almost always." [ref=e88]:
+                - cell "Postgres" [ref=e89]
+                - cell "Default. Almost always." [ref=e90]
+              - row "MongoDB Document-shaped data with no relational pull." [ref=e91]:
+                - cell "MongoDB" [ref=e92]
+                - cell "Document-shaped data with no relational pull." [ref=e93]
+              - row "DynamoDB Hot path with known access patterns." [ref=e94]:
+                - cell "DynamoDB" [ref=e95]
+                - cell "Hot path with known access patterns." [ref=e96]
+          - paragraph [ref=e97]: That’s about it. Delete me.
+        - generic [ref=e98]:
+          - generic [ref=e99]: Share
+          - generic [ref=e100]:
+            - link "Share on X" [ref=e101] [cursor=pointer]:
+              - /url: https://twitter.com/intent/tweet?text=An%20example%20post%20(delete%20me)&url=https%3A%2F%2Fheinlinaung.github.io%2Fblog%2Fexample-post%2F
+              - img [ref=e102]
+              - generic [ref=e104]: X
+            - link "Share on LinkedIn" [ref=e105] [cursor=pointer]:
+              - /url: https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fheinlinaung.github.io%2Fblog%2Fexample-post%2F
+              - img [ref=e106]
+              - generic [ref=e108]: LinkedIn
+            - link "Share on Hacker News" [ref=e109] [cursor=pointer]:
+              - /url: https://news.ycombinator.com/submitlink?u=https%3A%2F%2Fheinlinaung.github.io%2Fblog%2Fexample-post%2F&t=An%20example%20post%20(delete%20me)
+              - img [ref=e110]
+              - generic [ref=e112]: HN
+            - button "Copy link" [ref=e113] [cursor=pointer]:
+              - img [ref=e114]
+              - generic [ref=e117]: Copy link
+        - generic [ref=e118]:
+          - heading "Comments" [level=2] [ref=e119]
+          - generic [ref=e120]:
+            - paragraph [ref=e121]: "Comments will appear here once Giscus is configured. To enable:"
+            - list [ref=e122]:
+              - listitem [ref=e123]: Enable Discussions on this repo's GitHub settings.
+              - listitem [ref=e124]:
+                - text: Install the
+                - link "giscus GitHub App" [ref=e125] [cursor=pointer]:
+                  - /url: https://github.com/apps/giscus
+                - text: on the repo.
+              - listitem [ref=e126]:
+                - text: Visit
+                - link "giscus.app" [ref=e127] [cursor=pointer]:
+                  - /url: https://giscus.app
+                - text: ", fill in the repo, copy the"
+                - code [ref=e128]: repoId
+                - text: and
+                - code [ref=e129]: categoryId
+                - text: .
+              - listitem [ref=e130]:
+                - text: Paste those into
+                - code [ref=e131]: src/site.config.ts
+                - text: under
+                - code [ref=e132]: giscus
+                - text: .
+        - generic [ref=e133]:
+          - link "← All writing" [ref=e134] [cursor=pointer]:
+            - /url: /blog/
+          - link "Home →" [ref=e135] [cursor=pointer]:
+            - /url: /
+      - generic [ref=e136]:
+        - generic [ref=e137]: © 2026 Hein Lin Aung
+        - generic [ref=e138]: Yangon, Myanmar
+  - generic [ref=e141]:
+    - button "Menu" [ref=e142]:
+      - img [ref=e144]
+      - generic: Menu
+    - button "Inspect" [ref=e148]:
+      - img [ref=e150]
+      - generic: Inspect
+    - button "Audit" [ref=e152]:
+      - generic [ref=e153]:
+        - img [ref=e154]
+        - img [ref=e157]
+      - generic: Audit
+    - button "Settings" [ref=e160]:
+      - img [ref=e162]
+      - generic: Settings

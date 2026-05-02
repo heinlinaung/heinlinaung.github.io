@@ -1,0 +1,146 @@
+---
+interface Props {
+  title: string;
+  url: string;
+}
+
+const { title, url } = Astro.props;
+
+const xUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+  title
+)}&url=${encodeURIComponent(url)}`;
+const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
+  url
+)}`;
+const hnUrl = `https://news.ycombinator.com/submitlink?u=${encodeURIComponent(
+  url
+)}&t=${encodeURIComponent(title)}`;
+---
+
+<div class="share">
+  <span class="share-label">Share</span>
+  <div class="share-actions">
+    <a
+      class="share-btn"
+      href={xUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Share on X"
+    >
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true">
+        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
+      </svg>
+      <span>X</span>
+    </a>
+
+    <a
+      class="share-btn"
+      href={linkedinUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Share on LinkedIn"
+    >
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true">
+        <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.339 18.337V9.75H5.667v8.587h2.672zM7.003 8.575a1.548 1.548 0 1 0 0-3.097 1.548 1.548 0 0 0 0 3.097zm11.335 9.762v-4.703c0-2.581-1.379-3.781-3.218-3.781-1.484 0-2.149.815-2.521 1.388V9.75h-2.671c.035.755 0 8.587 0 8.587h2.671v-4.797c0-.241.017-.481.088-.652.193-.48.633-.978 1.371-.978.967 0 1.354.737 1.354 1.818v4.609h2.926z"></path>
+      </svg>
+      <span>LinkedIn</span>
+    </a>
+
+    <a
+      class="share-btn"
+      href={hnUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Share on Hacker News"
+    >
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true">
+        <path d="M3 3h18v18H3V3zm9.04 9.6L8.4 6h2l2.06 4 2.04-4h2l-3.6 6.6V18h-1.86v-5.4z"></path>
+      </svg>
+      <span>HN</span>
+    </a>
+
+    <button
+      class="share-btn copy-btn"
+      type="button"
+      data-url={url}
+      aria-label="Copy link"
+    >
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+      </svg>
+      <span class="copy-label">Copy link</span>
+    </button>
+  </div>
+</div>
+
+<style>
+  .share {
+    margin-top: 40px;
+    padding: 16px 18px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--panel);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .share-label {
+    font-size: 13px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 500;
+  }
+  .share-actions {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .share-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    font-size: 13px;
+    color: var(--fg-soft);
+    background: var(--panel-2);
+    border: 1px solid var(--line-2);
+    border-radius: 999px;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: inherit;
+    transition: color 0.15s, border-color 0.15s, background 0.15s;
+  }
+  .share-btn:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+  .share-btn.copied {
+    color: var(--good);
+    border-color: var(--good);
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>(".copy-btn").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      const url = btn.dataset.url;
+      if (!url) return;
+      try {
+        await navigator.clipboard.writeText(url);
+        const label = btn.querySelector(".copy-label");
+        const original = label?.textContent ?? "Copy link";
+        if (label) label.textContent = "Copied";
+        btn.classList.add("copied");
+        setTimeout(() => {
+          if (label) label.textContent = original;
+          btn.classList.remove("copied");
+        }, 1600);
+      } catch (e) {
+        console.error("Copy failed", e);
+      }
+    });
+  });
+</script>

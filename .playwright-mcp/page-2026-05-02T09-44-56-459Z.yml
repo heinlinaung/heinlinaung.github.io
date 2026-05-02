@@ -1,0 +1,77 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - complementary [ref=e3]:
+      - link "Home" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - text: H
+      - heading "Hein Lin Aung" [level=1] [ref=e5]:
+        - link "Hein Lin Aung" [ref=e6] [cursor=pointer]:
+          - /url: /
+      - paragraph [ref=e7]: Backend engineer · Team lead
+      - paragraph [ref=e8]: Yangon, Myanmar
+      - paragraph [ref=e10]: I build APIs and lead a small team at Amdon. Mostly Node + Postgres, occasionally Rails.
+      - navigation [ref=e11]:
+        - list [ref=e12]:
+          - listitem [ref=e13]:
+            - link "Home ⌘ 1" [ref=e14] [cursor=pointer]:
+              - /url: /
+              - text: Home
+              - generic [ref=e15]: ⌘ 1
+          - listitem [ref=e16]:
+            - link "Writing ⌘ 2" [ref=e17] [cursor=pointer]:
+              - /url: /blog/
+              - text: Writing
+              - generic [ref=e18]: ⌘ 2
+          - listitem [ref=e19]:
+            - link "Work ⌘ 3" [ref=e20] [cursor=pointer]:
+              - /url: /#work
+              - text: Work
+              - generic [ref=e21]: ⌘ 3
+          - listitem [ref=e22]:
+            - link "Stack ⌘ 4" [ref=e23] [cursor=pointer]:
+              - /url: /#stack
+              - text: Stack
+              - generic [ref=e24]: ⌘ 4
+      - generic [ref=e25]:
+        - link "GitHub" [ref=e26] [cursor=pointer]:
+          - /url: https://github.com/heinlinaung
+        - link "LinkedIn" [ref=e27] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/hein-lin-aung
+        - link "Goodreads" [ref=e28] [cursor=pointer]:
+          - /url: https://www.goodreads.com/heinlinaung
+        - link "Email" [ref=e29] [cursor=pointer]:
+          - /url: mailto:heinlinaung@amdon.com
+    - main [ref=e30]:
+      - paragraph [ref=e31]: Writing
+      - heading "Notes from the backend." [level=1] [ref=e32]
+      - paragraph [ref=e33]: Mostly APIs, infra, and the boring middle of shipping software. Sometimes leadership.
+      - heading "2026" [level=3] [ref=e34]
+      - generic [ref=e35]:
+        - link "A new home for the writing I rebuilt the site. Here's what's different and what I plan to write about. May 02" [ref=e36] [cursor=pointer]:
+          - /url: /blog/hello/
+          - generic [ref=e37]:
+            - paragraph [ref=e38]: A new home for the writing
+            - paragraph [ref=e39]: I rebuilt the site. Here's what's different and what I plan to write about.
+          - time [ref=e40]: May 02
+        - link "An example post (delete me) A demo post showing typography, code blocks, lists, and quotes. Safe to delete once you publish your first real post. May 01" [ref=e41] [cursor=pointer]:
+          - /url: /blog/example-post/
+          - generic [ref=e42]:
+            - paragraph [ref=e43]: An example post (delete me)
+            - paragraph [ref=e44]: A demo post showing typography, code blocks, lists, and quotes. Safe to delete once you publish your first real post.
+          - time [ref=e45]: May 01
+      - generic [ref=e46]:
+        - generic [ref=e47]: © 2026 Hein Lin Aung
+        - generic [ref=e48]: Yangon, Myanmar
+  - generic [ref=e51]:
+    - button "Menu" [ref=e52]:
+      - img [ref=e54]
+      - generic: Menu
+    - button "Inspect" [ref=e58]:
+      - img [ref=e60]
+      - generic: Inspect
+    - button "Audit" [ref=e62]:
+      - img [ref=e64]
+      - generic: Audit
+    - button "Settings" [ref=e67]:
+      - img [ref=e69]
+      - generic: Settings

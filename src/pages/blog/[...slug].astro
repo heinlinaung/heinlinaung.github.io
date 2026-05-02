@@ -1,0 +1,75 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import Page from "../../layouts/Page.astro";
+import ShareButtons from "../../components/ShareButtons.astro";
+import Comments from "../../components/Comments.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog", ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+interface Props {
+  post: CollectionEntry<"blog">;
+}
+
+const { post } = Astro.props;
+const { Content, remarkPluginFrontmatter } = await post.render();
+
+const fullDate = new Intl.DateTimeFormat("en-US", {
+  year: "numeric",
+  month: "short",
+  day: "numeric",
+}).format(post.data.pubDate);
+
+const readingMinutes = remarkPluginFrontmatter?.minutesRead as
+  | string
+  | undefined;
+
+const postUrl = new URL(`/blog/${post.slug}/`, Astro.site).toString();
+---
+
+<Page
+  current="writing"
+  title={post.data.title}
+  description={post.data.description}
+  ogType="article"
+  publishedTime={post.data.pubDate.toISOString()}
+  tags={post.data.tags}
+>
+  <article>
+    <header>
+      <p class="crumbs">
+        <a href="/">Home</a>
+        <span class="sep">/</span>
+        <a href="/blog/">Writing</a>
+        <span class="sep">/</span>
+        <span>{post.slug}</span>
+      </p>
+      <h1>{post.data.title}</h1>
+      <p class="meta">
+        <span>{fullDate}</span>
+        {readingMinutes && <><span>·</span><span>{readingMinutes}</span></>}
+        {post.data.tags.map((tag) => (
+          <span class="pill">{tag}</span>
+        ))}
+      </p>
+    </header>
+
+    <div class="prose">
+      <Content />
+    </div>
+
+    <ShareButtons title={post.data.title} url={postUrl} />
+
+    <Comments />
+
+    <div class="post-end">
+      <a href="/blog/">← All writing</a>
+      <a href="/">Home →</a>
+    </div>
+  </article>
+</Page>

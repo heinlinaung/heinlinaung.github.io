@@ -1,0 +1,19 @@
+{
+  "name": "heinlinaung-portfolio",
+  "type": "module",
+  "version": "3.0.0",
+  "description": "Personal site and writing of Hein Lin Aung.",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/rss": "^4.0.7",
+    "@astrojs/sitemap": "3.2.1",
+    "astro": "^4.16.7"
+  }
+}

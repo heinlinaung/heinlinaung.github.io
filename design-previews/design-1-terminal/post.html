@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>notes on running edx behind a tutor stack — hein lin aung</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #0a0a0a;
+        --fg: #d4d4d4;
+        --muted: #6b6b6b;
+        --dim: #3a3a3a;
+        --accent: #a3e635;
+        --line: #1a1a1a;
+      }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; padding: 0; background: var(--bg); color: var(--fg); }
+      body {
+        font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+      }
+      .wrap { max-width: 680px; margin: 0 auto; padding: 80px 24px 96px; }
+
+      nav.top {
+        display: flex; justify-content: space-between; align-items: center;
+        padding-bottom: 24px; margin-bottom: 40px;
+        border-bottom: 1px dashed var(--line); flex-wrap: wrap; gap: 12px;
+      }
+      nav.top .brand .prompt { color: var(--accent); }
+      nav.top .brand .path { color: var(--muted); }
+      nav.top ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 20px; }
+      nav.top a { color: var(--muted); text-decoration: none; }
+      nav.top a:hover { color: var(--accent); }
+
+      article header { margin-bottom: 32px; }
+      article h1 {
+        font-size: 22px; font-weight: 700; margin: 0 0 8px;
+        line-height: 1.4; letter-spacing: -0.01em;
+      }
+      article h1::before { content: "# "; color: var(--accent); }
+      article .meta { color: var(--muted); font-size: 13px; }
+
+      article h2 {
+        font-size: 15px; margin: 40px 0 12px; font-weight: 700;
+      }
+      article h2::before { content: "## "; color: var(--accent); }
+
+      article p { margin: 0 0 16px; }
+      article a { color: var(--accent); border-bottom: 1px dashed var(--accent); text-decoration: none; }
+      article ul { padding-left: 20px; }
+      article li { margin-bottom: 6px; }
+      article code {
+        background: #141414;
+        border: 1px solid var(--line);
+        padding: 1px 6px;
+        border-radius: 4px;
+        font-size: 12.5px;
+      }
+      article pre {
+        background: #050505;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        padding: 14px 16px;
+        overflow-x: auto;
+        font-size: 12.5px;
+        line-height: 1.6;
+      }
+      article pre code { background: none; border: 0; padding: 0; }
+      article blockquote {
+        margin: 16px 0;
+        padding: 4px 16px;
+        border-left: 2px solid var(--accent);
+        color: var(--muted);
+      }
+
+      .preview-bar {
+        position: fixed; top: 0; left: 0; right: 0;
+        background: #050505; border-bottom: 1px solid var(--line);
+        padding: 8px 16px; font-size: 12px; color: var(--muted); z-index: 50;
+      }
+      .preview-bar a { color: var(--accent); text-decoration: none; }
+
+      .end {
+        margin-top: 64px; padding-top: 24px;
+        border-top: 1px dashed var(--line);
+        color: var(--muted); font-size: 13px;
+        display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+      }
+      .end a { color: var(--accent); text-decoration: none; border-bottom: 1px dashed var(--accent); }
+    </style>
+  </head>
+  <body>
+    <div class="preview-bar">
+      <a href="../index.html">← all previews</a> · design 1 — blog post
+    </div>
+    <main class="wrap">
+      <nav class="top">
+        <span class="brand"><span class="prompt">$</span> hein<span class="path">@portfolio</span>:~/blog/edx-tutor</span>
+        <ul>
+          <li><a href="./index.html">home</a></li>
+          <li><a href="./blog.html">blog</a></li>
+        </ul>
+      </nav>
+
+      <article>
+        <header>
+          <h1>notes on running edx behind a tutor stack</h1>
+          <p class="meta">2026-04-12 · ~8 min read · infra, edx, docker</p>
+        </header>
+
+        <p>
+          tutor is the easiest way to run open edx in production without owning a
+          devops team — until you need to bridge it into something that wasn't on the
+          original blueprint. for fintech festival 2022, we needed oauth between a
+          third-party identity provider and a tutor-hosted edx. here's what stuck.
+        </p>
+
+        <h2>the constraint</h2>
+        <p>
+          we couldn't fork. updates from upstream tutor land regularly, and any patch
+          we held would rot. so the rule was: <em>plugins or nothing</em>.
+        </p>
+
+        <pre><code>tutor plugins install ./our-oauth-plugin
+tutor plugins enable our-oauth-plugin
+tutor config save</code></pre>
+
+        <h2>what worked</h2>
+        <ul>
+          <li>treating oauth config as a tutor plugin, not a fork.</li>
+          <li>letting nginx terminate tls, not django.</li>
+          <li>k8s for the lms / lms-worker / mysql split — but only because we already had a cluster.</li>
+        </ul>
+
+        <h2>what i'd do differently</h2>
+        <blockquote>
+          if you don't already run k8s, do not adopt it for one event. use docker compose
+          on a single beefy box and sleep at night.
+        </blockquote>
+
+        <p>
+          the k8s setup wasn't <em>wrong</em> — it just demanded constant attention
+          for a workload that peaked once and went quiet. a vertical box would've been
+          half the operational cost.
+        </p>
+
+        <h2>the takeaway</h2>
+        <p>
+          tutor's plugin system is the load-bearing piece. respect it, and edx becomes
+          surprisingly tractable. patch around it, and you'll spend the rest of the
+          year merging upstream changes by hand.
+        </p>
+      </article>
+
+      <div class="end">
+        <a href="./blog.html">← blog index</a>
+        <a href="./index.html">home</a>
+      </div>
+    </main>
+  </body>
+</html>

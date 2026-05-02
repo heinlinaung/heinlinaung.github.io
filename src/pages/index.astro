@@ -1,0 +1,113 @@
+---
+import Page from "../layouts/Page.astro";
+import { siteConfig } from "../site.config";
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection("blog", ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+
+const work = [
+  {
+    name: "Smart School",
+    href: "#",
+    when: "2024 — now",
+    blurb:
+      "LMS with assignment workflows, realtime worksheet portal, monthly competitions. Backend lead.",
+  },
+  {
+    name: "STEMWerkz",
+    href: "https://www.stemwerkz.org/about-stemwerkz",
+    when: "2022 — 2024",
+    blurb:
+      "Inquiry-based learning portal for young learners. Backend & architecture.",
+  },
+  {
+    name: "edX for SG Fintech Festival",
+    href: "http://courses.apixoxygen.com",
+    when: "2022",
+    blurb:
+      "OAuth bridge between third-party identity and a Tutor-hosted edX. Docker / k8s.",
+  },
+  {
+    name: "ClassWerkz",
+    href: "https://www.classwerkz.com/",
+    when: "2021 — 2022",
+    blurb:
+      "Class management software: attendance, scheduling, parent comms. Backend.",
+  },
+  {
+    name: "Aloha / beescm",
+    href: "https://beescm.com/",
+    when: "2020 — 2021",
+    blurb: "Hotel procurement web app for a chain in Asia. Full stack.",
+  },
+];
+
+const dateFmt = new Intl.DateTimeFormat("en-US", {
+  month: "short",
+  year: "numeric",
+});
+---
+
+<Page current="home">
+  <p class="greeting">Hello, world</p>
+  <p class="lead">
+    I lead a backend team at Amdon, building learning platforms for schools
+    across Asia. I write here about the <em>quiet, unglamorous middle</em> of
+    shipping software — APIs, infra, and the trade-offs that don't fit on a
+    slide.
+  </p>
+
+  {posts.length > 0 && (
+    <section>
+      <h2 class="section-label">Recent writing</h2>
+      <div class="card-list">
+        {posts.map((post) => (
+          <a class="card" href={`/blog/${post.slug}/`}>
+            <div>
+              <p class="title">{post.data.title}</p>
+              <p class="excerpt">{post.data.description}</p>
+            </div>
+            <time datetime={post.data.pubDate.toISOString()}>
+              {dateFmt.format(post.data.pubDate)}
+            </time>
+          </a>
+        ))}
+      </div>
+      <a class="more" href="/blog/">All posts →</a>
+    </section>
+  )}
+
+  <section id="work">
+    <h2 class="section-label">Selected work</h2>
+    <div class="card-list">
+      {work.map((w) => (
+        <div class="work-row">
+          <div>
+            <h3>
+              {w.href === "#" ? (
+                <span>{w.name}</span>
+              ) : (
+                <a href={w.href} target="_blank" rel="noopener noreferrer">
+                  {w.name}
+                </a>
+              )}
+            </h3>
+            <p>{w.blurb}</p>
+          </div>
+          <span class="when">{w.when}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section id="stack">
+    <h2 class="section-label">Stack I reach for</h2>
+    <div class="chips">
+      {siteConfig.stack.map((item) => (
+        <span class="chip">{item}</span>
+      ))}
+    </div>
+  </section>
+</Page>

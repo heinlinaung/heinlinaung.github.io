@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hein Lin Aung — Backend engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #0f0f10;
+        --fg: #ededed;
+        --muted: #8a8a8a;
+        --dim: #2a2a2c;
+        --line: #232325;
+        --accent: #e9d5a1;
+      }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; padding: 0; background: var(--bg); color: var(--fg); }
+      body {
+        font-family: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+        font-size: 16px;
+        line-height: 1.7;
+        -webkit-font-smoothing: antialiased;
+      }
+      .wrap { max-width: 680px; margin: 0 auto; padding: 96px 28px 96px; }
+
+      nav.top {
+        display: flex; justify-content: space-between; align-items: baseline;
+        margin-bottom: 80px;
+      }
+      nav.top .brand {
+        font-family: "Fraunces", serif;
+        font-size: 18px;
+        font-weight: 500;
+        letter-spacing: -0.01em;
+      }
+      nav.top ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 28px; }
+      nav.top a {
+        color: var(--muted); text-decoration: none; font-size: 14px;
+        transition: color .2s ease;
+      }
+      nav.top a:hover, nav.top a.active { color: var(--fg); }
+
+      header.intro { margin-bottom: 80px; }
+      .eyebrow {
+        font-size: 13px;
+        color: var(--accent);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        margin: 0 0 20px;
+      }
+      header.intro h1 {
+        font-family: "Fraunces", serif;
+        font-weight: 400;
+        font-size: 52px;
+        line-height: 1.1;
+        margin: 0 0 24px;
+        letter-spacing: -0.02em;
+      }
+      header.intro h1 em {
+        font-style: italic;
+        color: var(--accent);
+        font-weight: 400;
+      }
+      header.intro p {
+        color: var(--muted);
+        font-size: 18px;
+        margin: 0 0 16px;
+        max-width: 56ch;
+      }
+      header.intro p strong { color: var(--fg); font-weight: 500; }
+
+      section { margin: 64px 0; }
+      h2 {
+        font-family: "Fraunces", serif;
+        font-weight: 500;
+        font-size: 22px;
+        margin: 0 0 24px;
+        letter-spacing: -0.01em;
+      }
+
+      .post-list { list-style: none; padding: 0; margin: 0; }
+      .post-list li {
+        padding: 20px 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .post-list li:last-child { border-bottom: 0; }
+      .post-list a {
+        display: flex;
+        justify-content: space-between;
+        gap: 24px;
+        color: var(--fg);
+        text-decoration: none;
+        align-items: baseline;
+      }
+      .post-list .title {
+        font-family: "Fraunces", serif;
+        font-size: 19px;
+        font-weight: 400;
+        letter-spacing: -0.005em;
+      }
+      .post-list a:hover .title { color: var(--accent); }
+      .post-list time {
+        color: var(--muted);
+        font-size: 13px;
+        font-variant-numeric: tabular-nums;
+        flex-shrink: 0;
+      }
+
+      .work-list { list-style: none; padding: 0; margin: 0; }
+      .work-list li {
+        padding: 20px 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .work-list li:last-child { border-bottom: 0; }
+      .work-list .row {
+        display: flex; justify-content: space-between; align-items: baseline; gap: 16px;
+        margin-bottom: 4px;
+      }
+      .work-list .name {
+        font-family: "Fraunces", serif;
+        font-size: 19px;
+        font-weight: 500;
+      }
+      .work-list .name a { color: var(--fg); text-decoration: none; }
+      .work-list .name a:hover { color: var(--accent); }
+      .work-list .when { color: var(--muted); font-size: 13px; }
+      .work-list .desc { color: var(--muted); font-size: 15px; margin: 0; }
+
+      .links {
+        display: flex; gap: 20px; flex-wrap: wrap;
+      }
+      .links a {
+        color: var(--fg);
+        text-decoration: none;
+        border-bottom: 1px solid var(--dim);
+        padding-bottom: 2px;
+        font-size: 15px;
+        transition: border-color .2s ease;
+      }
+      .links a:hover { border-color: var(--accent); }
+
+      footer {
+        margin-top: 96px; padding-top: 32px;
+        border-top: 1px solid var(--line);
+        color: var(--muted); font-size: 13px;
+        display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+      }
+
+      .preview-bar {
+        position: fixed; top: 0; left: 0; right: 0;
+        background: #050505; border-bottom: 1px solid var(--line);
+        padding: 10px 16px; font-size: 12px; color: var(--muted); z-index: 50;
+        font-family: "Inter", sans-serif;
+      }
+      .preview-bar a { color: var(--accent); text-decoration: none; }
+      .wrap { padding-top: 100px; }
+
+      @media (max-width: 600px) {
+        header.intro h1 { font-size: 38px; }
+        nav.top ul { gap: 18px; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="preview-bar">
+      <a href="../index.html">← all previews</a> &nbsp;·&nbsp; design 2 — editorial dark
+    </div>
+
+    <main class="wrap">
+      <nav class="top">
+        <span class="brand">Hein Lin Aung</span>
+        <ul>
+          <li><a href="#" class="active">Home</a></li>
+          <li><a href="./blog.html">Writing</a></li>
+          <li><a href="#work">Work</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <header class="intro">
+        <p class="eyebrow">Backend engineer · Yangon</p>
+        <h1>Building <em>quiet</em> systems<br/>that ship on time.</h1>
+        <p>
+          I'm Hein. I lead a backend team at <strong>Amdon</strong>, where we build
+          learning platforms for schools across Asia. I write here about APIs,
+          infrastructure, and the unglamorous middle of shipping software.
+        </p>
+      </header>
+
+      <section id="writing">
+        <h2>Recent writing</h2>
+        <ul class="post-list">
+          <li><a href="./post.html"><span class="title">Notes on running edX behind a Tutor stack</span><time>Apr 2026</time></a></li>
+          <li><a href="./post.html"><span class="title">A small Ruby on Rails lesson, the hard way</span><time>Feb 2026</time></a></li>
+          <li><a href="./post.html"><span class="title">Postgres JSONB is a foot-cannon, used carefully</span><time>Dec 2025</time></a></li>
+          <li><a href="./post.html"><span class="title">Kubernetes on AWS without breaking the bank</span><time>Sep 2025</time></a></li>
+          <li><a href="./post.html"><span class="title">Why my team stopped writing custom auth</span><time>Jun 2025</time></a></li>
+        </ul>
+      </section>
+
+      <section id="work">
+        <h2>Selected work</h2>
+        <ul class="work-list">
+          <li>
+            <div class="row"><span class="name"><a href="#">Smart School</a></span><span class="when">2024 — now</span></div>
+            <p class="desc">An LMS with assignment workflows, realtime worksheet portal, and monthly competitions. Backend lead.</p>
+          </li>
+          <li>
+            <div class="row"><span class="name"><a href="https://www.stemwerkz.org/about-stemwerkz">STEMWerkz</a></span><span class="when">2022 — 2024</span></div>
+            <p class="desc">Inquiry-based learning portal for young learners. Backend &amp; architecture.</p>
+          </li>
+          <li>
+            <div class="row"><span class="name"><a href="http://courses.apixoxygen.com">edX for SG Fintech Festival</a></span><span class="when">2022</span></div>
+            <p class="desc">OAuth bridge between third-party identity and a Tutor-hosted edX. Docker / Kubernetes deploys.</p>
+          </li>
+          <li>
+            <div class="row"><span class="name"><a href="https://www.classwerkz.com/">ClassWerkz</a></span><span class="when">2021 — 2022</span></div>
+            <p class="desc">Class management software: attendance, scheduling, parent comms. Backend.</p>
+          </li>
+          <li>
+            <div class="row"><span class="name"><a href="https://beescm.com/">Aloha / beescm</a></span><span class="when">2020 — 2021</span></div>
+            <p class="desc">Hotel procurement web app for a chain in Asia. Full stack.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section id="contact">
+        <h2>Elsewhere</h2>
+        <div class="links">
+          <a href="https://github.com/heinlinaung">GitHub</a>
+          <a href="https://www.linkedin.com/in/hein-lin-aung">LinkedIn</a>
+          <a href="https://www.goodreads.com/heinlinaung">Goodreads</a>
+          <a href="mailto:heinlinaung@amdon.com">Email</a>
+        </div>
+      </section>
+
+      <footer>
+        <span>© 2026 Hein Lin Aung</span>
+        <span>Yangon, Myanmar</span>
+      </footer>
+    </main>
+  </body>
+</html>

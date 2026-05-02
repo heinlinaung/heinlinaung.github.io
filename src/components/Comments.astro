@@ -1,0 +1,74 @@
+---
+import { siteConfig } from "../site.config";
+
+const { giscus } = siteConfig;
+const configured = giscus.repoId && giscus.categoryId;
+---
+
+<section class="comments-section" id="comments">
+  <h2 class="section-label">Comments</h2>
+
+  {configured ? (
+    <script
+      src="https://giscus.app/client.js"
+      data-repo={giscus.repo}
+      data-repo-id={giscus.repoId}
+      data-category={giscus.category}
+      data-category-id={giscus.categoryId}
+      data-mapping={giscus.mapping}
+      data-strict={giscus.strict}
+      data-reactions-enabled={giscus.reactionsEnabled}
+      data-emit-metadata="0"
+      data-input-position={giscus.inputPosition}
+      data-theme={giscus.theme}
+      data-lang={giscus.lang}
+      data-loading="lazy"
+      crossorigin="anonymous"
+      async
+    ></script>
+  ) : (
+    <div class="comments-pending">
+      <p>
+        Comments will appear here once Giscus is configured. To enable:
+      </p>
+      <ol>
+        <li>Enable Discussions on this repo's GitHub settings.</li>
+        <li>Install the <a href="https://github.com/apps/giscus" target="_blank" rel="noopener noreferrer">giscus GitHub App</a> on the repo.</li>
+        <li>Visit <a href="https://giscus.app" target="_blank" rel="noopener noreferrer">giscus.app</a>, fill in the repo, copy the <code>repoId</code> and <code>categoryId</code>.</li>
+        <li>Paste those into <code>src/site.config.ts</code> under <code>giscus</code>.</li>
+      </ol>
+    </div>
+  )}
+</section>
+
+<style>
+  .comments-section {
+    margin-top: 56px;
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+  }
+  .comments-pending {
+    padding: 18px 22px;
+    border: 1px dashed var(--line-2);
+    border-radius: var(--radius);
+    background: var(--panel);
+    color: var(--muted);
+    font-size: 14px;
+  }
+  .comments-pending p { margin: 0 0 12px; }
+  .comments-pending ol { margin: 0; padding-left: 20px; }
+  .comments-pending li { margin-bottom: 6px; }
+  .comments-pending a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .comments-pending code {
+    font-family: var(--font-mono);
+    background: var(--panel-2);
+    border: 1px solid var(--line);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 12.5px;
+  }
+</style>

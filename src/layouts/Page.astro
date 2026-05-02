@@ -1,0 +1,30 @@
+---
+import Base from "./Base.astro";
+import Sidebar from "../components/Sidebar.astro";
+import { siteConfig } from "../site.config";
+
+interface Props {
+  title?: string;
+  description?: string;
+  current?: "home" | "writing" | "work" | "stack";
+  ogType?: "website" | "article";
+  publishedTime?: string;
+  tags?: string[];
+}
+
+const props = Astro.props;
+const year = new Date().getFullYear();
+---
+
+<Base {...props}>
+  <div class="layout">
+    <Sidebar current={props.current} />
+    <main>
+      <slot />
+      <footer class="site">
+        <span>© {year} {siteConfig.author}</span>
+        <span>{siteConfig.location}</span>
+      </footer>
+    </main>
+  </div>
+</Base>

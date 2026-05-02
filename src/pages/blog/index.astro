@@ -1,0 +1,57 @@
+---
+import Page from "../../layouts/Page.astro";
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const byYear = new Map<number, typeof posts>();
+for (const post of posts) {
+  const y = post.data.pubDate.getFullYear();
+  if (!byYear.has(y)) byYear.set(y, []);
+  byYear.get(y)!.push(post);
+}
+const years = Array.from(byYear.keys()).sort((a, b) => b - a);
+
+const dayMonth = new Intl.DateTimeFormat("en-US", {
+  month: "short",
+  day: "2-digit",
+});
+---
+
+<Page
+  current="writing"
+  title="Writing"
+  description="Notes from the backend by Hein Lin Aung. Mostly APIs, infra, and the boring middle of shipping software."
+>
+  <p class="greeting">Writing</p>
+  <h1 class="page">Notes from the backend.</h1>
+  <p class="lead-soft">
+    Mostly APIs, infra, and the boring middle of shipping software. Sometimes
+    leadership.
+  </p>
+
+  {years.length === 0 && (
+    <p style="color: var(--muted)">No posts yet — the first one is on its way.</p>
+  )}
+
+  {years.map((year) => (
+    <>
+      <h3 class="year-head">{year}</h3>
+      <div class="card-list">
+        {byYear.get(year)!.map((post) => (
+          <a class="card" href={`/blog/${post.slug}/`}>
+            <div>
+              <p class="title">{post.data.title}</p>
+              <p class="excerpt">{post.data.description}</p>
+            </div>
+            <time datetime={post.data.pubDate.toISOString()}>
+              {dayMonth.format(post.data.pubDate)}
+            </time>
+          </a>
+        ))}
+      </div>
+    </>
+  ))}
+</Page>

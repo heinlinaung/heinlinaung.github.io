@@ -1,0 +1,11 @@
+{
+  "title": "Hein Lin Aung | Software Engineering Apprentice",
+  "description": "Hein Lin Aung's personal portfolio website",
+  "keywords": "Hein Lin Aung, heinlinaung, JavaScript, TypeScript, NodeJs, MongoDB",
+  "homepage": "https://heinlinaung.github.io/",
+  "themeColor": "#21252b",
+  "image": "https://heinlinaung.github.io/images/logo512.png",
+  "verification": {
+    "google": "sample"
+  }
+}

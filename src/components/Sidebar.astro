@@ -1,0 +1,49 @@
+---
+import { siteConfig } from "../site.config";
+
+interface Props {
+  current?: "home" | "writing" | "work" | "stack";
+}
+
+const { current } = Astro.props;
+---
+
+<aside>
+  <a href="/" class="avatar" aria-label="Home">{siteConfig.authorInitial}</a>
+  <h1><a href="/">{siteConfig.title}</a></h1>
+  <p class="role">{siteConfig.role}</p>
+  <p class="loc"><span class="dot"></span>{siteConfig.location}</p>
+  <p class="bio">{siteConfig.bio}</p>
+
+  <nav>
+    <ul>
+      <li>
+        <a href="/" aria-current={current === "home" ? "page" : undefined}>
+          Home <span class="key">⌘ 1</span>
+        </a>
+      </li>
+      <li>
+        <a href="/blog/" aria-current={current === "writing" ? "page" : undefined}>
+          Writing <span class="key">⌘ 2</span>
+        </a>
+      </li>
+      <li>
+        <a href="/#work" aria-current={current === "work" ? "page" : undefined}>
+          Work <span class="key">⌘ 3</span>
+        </a>
+      </li>
+      <li>
+        <a href="/#stack" aria-current={current === "stack" ? "page" : undefined}>
+          Stack <span class="key">⌘ 4</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="links">
+    <a href={siteConfig.social.github} target="_blank" rel="noopener noreferrer">GitHub</a>
+    <a href={siteConfig.social.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <a href={siteConfig.social.goodreads} target="_blank" rel="noopener noreferrer">Goodreads</a>
+    <a href={`mailto:${siteConfig.email}`}>Email</a>
+  </div>
+</aside>

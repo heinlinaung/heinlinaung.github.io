@@ -381,6 +381,26 @@ article .meta {
   border-radius: var(--radius);
   margin: 24px 0;
 }
+.prose figure,
+.prose .diagram {
+  margin: 28px 0;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+}
+.prose figure svg,
+.prose .diagram svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.prose figcaption {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 13px;
+  text-align: center;
+}
 .prose table {
   width: 100%;
   border-collapse: collapse;

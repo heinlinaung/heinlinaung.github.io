@@ -7,6 +7,7 @@ export const siteConfig = {
   role: "Backend Team Lead · DevOps · Cloud Infrastructure",
   bio: "Experienced team lead specializing in scalable backend systems, CI/CD, and cloud infrastructure. [ Certified - AWS SAA, CKAD, Terraform ]",
   location: "Bangkok, Thailand",
+  quote: "Seize the day.",
   email: "heinlinaung.dev@gmail.com",
   social: {
     github: "https://github.com/heinlinaung",

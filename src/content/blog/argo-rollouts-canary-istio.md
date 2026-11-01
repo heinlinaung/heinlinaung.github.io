@@ -123,7 +123,7 @@ The first time you see that happen on your own machine, the idea stops being abs
 
 The full walkthrough — local cluster, Istio, Prometheus, the manifests, and a deliberately broken version to watch get rejected — is here:
 
-**→ [Argo Rollouts local demo: canary with Istio + Prometheus](https://www.notion.so/Argo-Rollouts-local-demo-canary-with-Istio-Prometheus-40b592f87dd5813c98c6fb50727ea0c6)**
+**→ [Argo Rollouts local demo: canary with Istio + Prometheus](https://heinlinaung.notion.site/Argo-Rollouts-local-demo-canary-with-Istio-Prometheus-40b592f87dd5813c98c6fb50727ea0c6)**
 
 It's about twenty minutes end to end, and everything runs on your laptop. The reference demo video is [Argo Rollouts Demo](https://www.youtube.com/watch?v=hIL0E2gLkf8), which covers the same Istio integration.
 
